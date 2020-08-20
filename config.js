@@ -4,7 +4,9 @@ exports.config = {
   specs: ['tests/FirstTest.js'], // test case file
   multiCapabilities: [{
     browserName: 'firefox'
-  }, {
-    browserName: 'chrome'
-  }]
+  },
+  //{
+    //browserName: 'chrome'
+  //}
+  ]
 };
