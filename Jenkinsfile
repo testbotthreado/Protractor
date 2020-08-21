@@ -7,11 +7,15 @@ pipeline{
         stage("Install protractor"){
             steps{
                 sh 'npm install'
+                sh 'npm install protractor-beautiful-reporter --save-dev'
             }
         }
+
         stage("Clone the Repo"){
             steps{
                 git 'git@github.com:ganeshhubale/jaspro.git'
+                sh 'pip install miqsel --user'
+                sh 'miqsel start'
             }
         }
         stage("Run Test"){
@@ -23,9 +27,9 @@ pipeline{
 
     post {
         always {
-            echo 'Ganesh is saying Hello!'
+            echo 'Jenkins is saying Hello! Please have patience!!!'
 
-            mail bcc: '', body: "Project: ${env.JOB_NAME} Build Number: ${env.BUILD_NUMBER}  URL de build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "Status: Project name -> ${env.JOB_NAME}", to: "${DEFAULT_RECIPIENTS}";
+            mail bcc: '', body: "Project: ${env.JOB_NAME} Build Number: ${env.BUILD_NUMBER}  URL de build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "Jenkins is saying Hello! Please have patience!!!", to: 'ganeshhubale03@redhat.com';
         }
     }
 }
